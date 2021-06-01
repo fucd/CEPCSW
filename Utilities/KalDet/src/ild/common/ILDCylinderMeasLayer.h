@@ -37,9 +37,10 @@ public:
   Bool_t IsOnSurface(const TVector3 &xx) const {
 
     bool z = (xx.Z() >= GetZmin() && xx.Z() <= GetZmax());
-    bool r = std::fabs( (xx-this->GetXc()).Perp() - this->GetR() ) < 1.e-3; // for very short, very stiff tracks this can be poorly defined, so we relax this here a bit to 1 micron
-
-//    streamlog_out(DEBUG0) << "ILDCylinderMeasLayer IsOnSurface for " << this->TVMeasLayer::GetName() << " R =  " << this->GetR() << "  GetZmin() = " << GetZmin() << " GetZmax() = " << GetZmax()
+    //bool r = std::fabs( (xx-this->GetXc()).Perp() - this->GetR() ) < 1.e-3; // for very short, very stiff tracks this can be poorly defined, so we relax this here a bit to 1 micron
+    bool r = std::fabs( (xx-this->GetXc()).Perp() - this->GetR() ) < 5; // fucd: for DC, the hit positions are not always at the center of cells, so relax cut to 1/2 of cell height as preliminary 
+    
+    //streamlog_out(DEBUG0) << "ILDCylinderMeasLayer IsOnSurface for " << this->TVMeasLayer::GetName() << " R =  " << this->GetR() << "  GetZmin() = " << GetZmin() << " GetZmax() = " << GetZmax()
 //    << " dr = " << std::fabs( (xx-this->GetXc()).Perp() - this->GetR() ) << " r = " << r << " z = " << z 
 //    << std::endl;
     

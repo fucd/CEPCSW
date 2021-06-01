@@ -146,21 +146,19 @@ ILDVTrackHit* ILDCylinderMeasLayer::ConvertLCIOTrkHit(edm4hep::ConstTrackerHit t
     
   bool hit_on_surface = IsOnSurface(hit);
   
-  //debug() << "ILDCylinderMeasLayer::ConvertLCIOTrkHit ILDCylinderHit created"
-  // streamlog_out(DEBUG1) << "ILDCylinderMeasLayer::ConvertLCIOTrkHit ILDCylinderHit created" 
-  //       		<< " R = " << hit.Perp()
-  //       		<< " Layer R = " << this->GetR() 
-  //       		<< " RPhi = "  <<  x[0]
-  //       		<< " Z = "     <<  x[1]
-  //       		<< " dRPhi = " << dx[0]
-  //       		<< " dZ = "    << dx[1]
-  //       		<< " x = " << pos.x
-  //       		<< " y = " << pos.y
-  //       		<< " z = " << pos.z
-  //       		<< " onSurface = " << hit_on_surface
-  //       		<< std::endl ;  
-  //<<endmsg;
-
+  //std::cout << "ILDCylinderMeasLayer::ConvertLCIOTrkHit ILDCylinderHit created" 
+  //	    << " R = " << hit.Perp()
+  //	    << " Layer R = " << this->GetR() 
+  //	    << " RPhi = "  <<  x[0]
+  //	    << " Z = "     <<  x[1]
+  //	    << " dRPhi = " << dx[0]
+  //	    << " dZ = "    << dx[1]
+  //	    << " x = " << pos.x
+  //	    << " y = " << pos.y
+  //	    << " z = " << pos.z
+  //	    << " onSurface = " << hit_on_surface
+  //	    << std::endl ;  
+  
   return hit_on_surface ? new ILDCylinderHit( *this , x, dx, this->GetBz(), trkhit) : NULL; 
   
 }
